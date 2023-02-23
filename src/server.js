@@ -37,6 +37,6 @@ app.use((req, res, next) => {
 app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 
 export default app;
