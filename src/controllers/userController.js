@@ -129,10 +129,14 @@ export const finishGithubLogin = async (req, res) => {
     // 에러 창 추가 예정
   }
 };
-export const edit = (req, res) => res.send("Edit User");
-export const remove = (req, res) => res.send("Remove User");
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
+};
+export const getEdit = (req, res) => {
+  return res.render("edit-profile", { pageTitle: "Edit Profile" });
+};
+export const postEdit = (req, res) => {
+  return res.render("edit-profile");
 };
 export const see = (req, res) => res.send("see");
