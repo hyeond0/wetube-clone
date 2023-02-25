@@ -137,30 +137,30 @@ export const getEdit = (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id },
+      user: { _id, avatarURL },
     },
     body: { name, email, username, password },
+    file,
   } = req;
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      ...req.session.user,
+      avatarURL: file ? file.path : avatarURL,
       name,
       email,
       username,
-      location,
     },
     { new: true }
   );
   req.session.user = updatedUser;
-  return res.redirect("/users/edit");
+  return res.redirect("/user/edit");
 };
 
 export const getChangePassword = (req, res) => {
   if (req.session.user.socialOnly === true) {
     res.redirect("/");
   }
-  return res.render("users/change-password", { pageTittle: "Change Password" });
+  return res.render("user/change-password", { pageTittle: "Change Password" });
 };
 export const postChangePassword = async (req, res) => {
   const {
@@ -186,6 +186,6 @@ export const postChangePassword = async (req, res) => {
   user.password = newPassword;
   await user.save();
   req.session.user.password = user.password;
-  return res.redirect("/users/logout");
+  return res.redirect("/user/logout");
 };
 export const see = (req, res) => res.send("see");
