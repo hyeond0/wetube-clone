@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Video from "../models/Video";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
 import session from "express-session";
@@ -194,5 +195,10 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(400).render("404", { pageTitle: "User Not Found." });
   }
-  return res.render("user/profile", { pageTitle: `${user.name}`, user });
+  const videos = await Video.find({ owner: user._id });
+  return res.render("user/profile", {
+    pageTitle: `${user.name}`,
+    user,
+    videos,
+  });
 };
