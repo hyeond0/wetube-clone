@@ -8,7 +8,7 @@ header
           i.fas.fa-search
       if loggedIn
         li
-          a(href="videos/upload") Upload Video
+          a(href="/videos/upload") Upload Video
         li
           a(href=`/user/${loggedInUser._id}`) My Profile
         li
@@ -16,7 +16,11 @@ header
         li
           a(href="/user/logout") Log Out
         li
-          a(href="/my-profile") #{ loggedInUser.name }의 profile
+          a(href=`/user/${loggedInUser._id}`)
+            if loggedInUser.avatarURL === ""
+              span 😀
+            else
+              img.header__avatar(src="/" + loggedInUser.avatarURL)
       else
         li
           a.header__btn(href="/join") Join
