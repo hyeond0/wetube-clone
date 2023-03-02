@@ -109,6 +109,7 @@ const handleMouseMove = () => {
 const handleMouseLeave = () => {
   controlsTimeout = setTimeout(hideControls, 3000);
 };
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
