@@ -3,20 +3,33 @@ const video = document.getElementById("preview");
 
 let stream;
 let recorder;
+let videoFile;
+
+const handleDownload = () => {
+  const a = document.createElement("a");
+  a.href = videoFile;
+  a.download = "MyRecording.webm";
+  document.body.appendChild(a);
+  a.click();
+};
+
 const handleStop = () => {
-  startBtn.innerText = "Start Recording";
+  startBtn.innerText = "Download Recording";
   startBtn.removeEventListener("click", handleStop);
   startBtn.addEventListener("click", handleStart);
+  recorder.stop();
 };
 
 const handleStart = () => {
   startBtn.innerText = "Stop Recording";
   startBtn.removeEventListener("click", handleStart);
   startBtn.addEventListener("click", handleStop);
-  recorder = new MediaRecorder(stream);
+  recorder = new window.MediaRecorder(stream);
   recorder.ondataavailable = (event) => {
-    console.log(event.data);
-    const video = URL.createObjectURL();
+    videoFile = URL.createObjectURL(event.data);
+    video.srcObject = null;
+    video.src = videoFile;
+    video.play();
   };
   recorder.start();
 };
