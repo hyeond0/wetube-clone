@@ -1,5 +1,5 @@
 import express from "express";
-
+import flash from "express-flash";
 import morgan from "morgan";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
@@ -35,6 +35,7 @@ app.use((req, res, next) => {
   });
 });
 
+app.user(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));

@@ -8,6 +8,8 @@ html(lang="ko")
     )
     link(rel="stylesheet", href="/static/css/styles.css")
   body
+    if messages.error
+      span= messages.error
     include partial/header
     main
       block content
