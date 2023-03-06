@@ -36,7 +36,7 @@ app.use((req, res, next) => {
   });
 });
 
-app.user(flash());
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
