@@ -97,7 +97,6 @@ const init = async () => {
     },
   });
   video.srcObject = stream;
-  video.play();
 };
 
 init();
