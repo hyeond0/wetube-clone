@@ -18,10 +18,10 @@
     }
   }
 }
-
-#delete__comment:hover {
-  cursor: pointer;
-}
-#temp__comment:hover {
-  cursor: pointer;
+.video__comments {
+  .video__comment {
+    .video__delete {
+      cursor: pointer;
+    }
+  }
 }
