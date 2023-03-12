@@ -21,6 +21,12 @@ const addComment = (text, id) => {
   newComment.appendChild(span);
   newComment.appendChild(span2);
   videoComments.prepend(newComment);
+  span2.addEventListener("click", deleteComment);
+};
+
+const deleteComment = (e) => {
+  const comment = e.target.parentElement;
+  comment.remove();
 };
 
 const handleSubmit = async (event) => {
@@ -46,6 +52,7 @@ const handleSubmit = async (event) => {
     addComment(text, newCommentId);
   }
 };
+
 const handleDelete = async (e) => {
   const commentId = videoComment.dataset.id;
   const response = await fetch(`/api/comments/${commentId}/delete`, {
@@ -57,6 +64,7 @@ const handleDelete = async (e) => {
     comment.remove();
   }
 };
+
 if (form) {
   form.addEventListener("submit", handleSubmit);
   span2.addEventListener("click", handleDelete);
