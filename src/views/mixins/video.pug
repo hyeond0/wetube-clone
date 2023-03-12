@@ -1,9 +1,11 @@
 mixin video(video)
-  a.video-mixin(href=`/videos/${video.id}`, crossorigin)
-    .video-mixin__thumb(
-      style=`background-image:url(${video.thumbURL});background-size:cover;background-position:center;`,
-      crossorigin
-    )
+  a.video-mixin(href=`/videos/${video.id}`)
+    .video-mixin__thumb
+      img(
+        src=video.thumbURL,
+        crossorigin,
+        style="background-size: cover; background-position: center; width: 300px; height: 200px"
+      )
     .video-mixin__data
       span.video-mixin__title= video.title
       .video-mixin__meta
