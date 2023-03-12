@@ -69,7 +69,6 @@ const handleDownload = async () => {
 };
 
 const handleStart = () => {
-  video.play();
   actionBtn.innerText = "Recording";
   actionBtn.disabled = true;
   actionBtn.removeEventListener("click", handleStart);
@@ -98,6 +97,7 @@ const init = async () => {
     },
   });
   video.srcObject = stream;
+  video.play();
 };
 
 init();
