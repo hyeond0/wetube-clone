@@ -69,6 +69,7 @@ const handleDownload = async () => {
 };
 
 const handleStart = () => {
+  video.play();
   actionBtn.innerText = "Recording";
   actionBtn.disabled = true;
   actionBtn.removeEventListener("click", handleStart);
