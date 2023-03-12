@@ -1,6 +1,8 @@
 // video mixin
 .video-mixin {
   .video-mixin__thumb {
+    margin: 0;
+    padding: 0;
     height: 140px;
     border-radius: 7px;
     width: 100%;
