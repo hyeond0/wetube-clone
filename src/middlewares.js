@@ -9,9 +9,16 @@ const s3 = new aws.S3({
   },
 });
 
-const multerUplaoder = multerS3({
+const isKoyep = process.env.NODE_ENV === "production";
+const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "wwwwwetube",
+  bucket: "wwwwwetube/images",
+  acl: "public-read",
+});
+
+const s3VideoUploader = multerS3({
+  s3: s3,
+  bucket: "wwwwwetube/videos",
   acl: "public-read",
 });
 
@@ -45,7 +52,7 @@ export const avatarUpload = multer({
   limits: {
     fileSize: 3000000,
   },
-  storage: multerUplaoder,
+  storage: isKoyep ? s3ImageUploader : undefined,
 });
 
 export const videoUpload = multer({
@@ -53,5 +60,5 @@ export const videoUpload = multer({
   limits: {
     fileSize: 100000000,
   },
-  storage: multerUplaoder,
+  storage: isKoyep ? s3VideoUploader : undefined,
 });
