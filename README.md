@@ -1,16 +1,10 @@
-# Wetube Reloaded
+# Wetube
 
-/ -> Home
-/join -> Join
-/login -> Login
-/search -> Search
+10주 스터디 진행중! 23/02/06 ~ 23/03/11
 
-/users/:id -> Edit user
-/users/logout -> Log out
-/users/edit -> edit my profile
-/users/delete -> Delete my profile
+노마드 코더 유튜브 클론코딩 강의
 
-/videos/:id -> Watch Video
-/videos/:id/edit -> Edit Video
-/videos/:id/delete -> Delete Video
-/videos/upload -> Upload Video
+
+https://wetube-hyeond0.koyeb.app/
+
+
